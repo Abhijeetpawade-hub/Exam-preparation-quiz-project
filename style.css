@@ -1,0 +1,55 @@
+:root {
+    --accent: #7c3aed;
+    --accent-light: #a78bfa;
+    --bg: #030712;
+    --glass: rgba(255, 255, 255, 0.03);
+    --border: rgba(255, 255, 255, 0.1);
+    --text: #f9fafb;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+body { background-color: var(--bg); color: var(--text); overflow-x: hidden; min-height: 100vh; }
+
+/* Animated Background */
+.bg-animation { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: radial-gradient(circle at 50% 50%, #1e1b4b 0%, #030712 100%); }
+.blob { position: absolute; width: 400px; height: 400px; background: var(--accent); filter: blur(120px); border-radius: 50%; opacity: 0.15; animation: float 10s infinite alternate; }
+.blob:nth-child(2) { right: -100px; top: 10%; background: #db2777; }
+.blob:nth-child(3) { left: 10%; bottom: -50px; background: #2563eb; }
+@keyframes float { from { transform: translate(0,0); } to { transform: translate(60px, 40px); } }
+
+.container { width: 100%; max-width: 1100px; margin: 0 auto; padding: 2rem; display: flex; flex-direction: column; min-height: 100vh; justify-content: center; align-items: center; }
+.hidden { display: none !important; }
+
+/* Cards & Layout */
+.glass-card { background: var(--glass); backdrop-filter: blur(20px); border: 1px solid var(--border); border-radius: 32px; padding: 2.5rem; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); width: 100%; text-align: center; }
+.top-nav { display: flex; justify-content: space-between; align-items: center; width: 100%; padding: 1.2rem; background: var(--glass); border: 1px solid var(--border); border-radius: 20px; margin-bottom: 2rem; }
+
+.subject-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 20px; width: 100%; margin-bottom: 30px; }
+.subject-card { background: var(--glass); border: 1px solid var(--border); padding: 2rem; border-radius: 24px; cursor: pointer; transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+.subject-card:hover { transform: translateY(-8px); border-color: var(--accent); background: rgba(124, 58, 237, 0.1); }
+.card-icon { font-size: 2.5rem; margin-bottom: 1rem; color: var(--accent-light); }
+
+/* Buttons & Inputs */
+.btn-glow { background: var(--accent); color: white; border: none; padding: 1rem 2.5rem; border-radius: 14px; font-weight: 600; cursor: pointer; box-shadow: 0 0 20px rgba(124, 58, 237, 0.3); transition: 0.3s; }
+.btn-glow:hover { transform: scale(1.05); box-shadow: 0 0 35px rgba(124, 58, 237, 0.5); }
+.field { background: rgba(255,255,255,0.05); border: 1px solid var(--border); border-radius: 12px; padding: 0.8rem; display: flex; gap: 10px; margin-bottom: 12px; }
+.field input { background: transparent; border: none; color: white; outline: none; width: 100%; }
+
+/* Quiz Styles */
+.option-btn { width: 100%; text-align: left; padding: 1.1rem; margin-bottom: 10px; background: rgba(255,255,255,0.05); border: 1px solid var(--border); color: white; border-radius: 15px; cursor: pointer; transition: 0.2s; }
+.correct { background: #059669 !important; border-color: #10b981 !important; }
+.wrong { background: #dc2626 !important; border-color: #ef4444 !important; }
+
+/* Dashboard Results Table */
+.dashboard-results { margin-top: 2rem; padding: 1.5rem !important; }
+.res-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+.table-container { overflow-x: auto; max-height: 300px; }
+table { width: 100%; border-collapse: collapse; text-align: left; }
+th, td { padding: 12px; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
+.status-pass { color: #10b981; font-weight: bold; }
+.status-fail { color: #f87171; font-weight: bold; }
+
+.score-circle { width: 80px; height: 80px; border: 4px solid var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: bold; margin: 1rem auto; }
+.badge { background: var(--accent); padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; }
+.progress-wrapper { width: 100%; height: 6px; background: rgba(255,255,255,0.1); border-radius: 10px; margin: 15px 0; }
+.progress-fill { height: 100%; background: var(--accent); border-radius: 10px; transition: 0.4s; }
